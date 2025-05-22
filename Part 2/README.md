@@ -2,6 +2,7 @@
 
 This folder contains a **fully-featured, reproducible machine learning pipeline** for MNIST digit classification using PyTorch and Convolutional Neural Networks (CNNs). The pipeline is designed to follow best MLOps and ML reporting practices, including robust logging, checkpointing, plotting, and experiment versioning.
 
+Link to GitHub repo: https://github.com/JSON-Bjorn/Assignment-1
 ---
 
 ## Folder Structure

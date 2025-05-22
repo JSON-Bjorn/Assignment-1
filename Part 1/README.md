@@ -4,6 +4,8 @@ This is my first project in machine learning in my path to becoming an AI Engine
 
 This project eventually implements many different stages of an Artificial Neural Network (ANN), from a single neuron to a complete PyTorch model trained on the MNIST dataset.
 
+Link to GitHub repo: https://github.com/JSON-Bjorn/Assignment-1
+
 ## Project Structure
 
 ```

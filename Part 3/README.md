@@ -2,6 +2,8 @@
 
 This project implements two approaches for classifying brain MRI images into four categories (glioma, meningioma, pituitary tumor, no tumor):
 
+Link to GitHub repo: https://github.com/JSON-Bjorn/Assignment-1
+
 Dataset: https://www.kaggle.com/datasets/sartajbhuvaji/brain-tumor-classification-mri
 
 1. **Classic Learning:** Training a custom CNN from scratch.
