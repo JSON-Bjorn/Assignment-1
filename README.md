@@ -84,3 +84,5 @@ Assignment created for **Gabriel** at **Spiking Neurons**. Special thanks for gu
 ---
 
 For any questions, please refer to the part-specific README files or contact the course instructor.
+
+// Björn Revell
