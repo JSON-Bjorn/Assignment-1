@@ -1,0 +1,30 @@
+Reflection on Part 1: ANN & CNN Fundamentals
+============================================
+
+**Initial Goals:**
+------------------
+The aim of Part 1 was to build a deep understanding of artificial neural networks (ANNs) by implementing them from the ground up, starting with a single neuron and progressing to a full PyTorch model trained on the MNIST dataset. This part was designed to bridge the gap between mathematical theory and practical implementation, and to provide hands-on experience with both low-level and high-level tools.
+
+**Manual Neuron (A1):**
+-----------------------
+The first step was to implement a single neuron using only basic Python operations. This exercise reinforced the core concepts of weighted sums, bias, and activation functions. By writing the forward pass manually, I gained a clear understanding of how a neuron processes input data and how different activation functions (Sigmoid, ReLU, etc.) affect the output.
+
+**NumPy Neuron (A2):**
+----------------------
+Next, I re-implemented the neuron using NumPy for vectorized operations. This highlighted the efficiency and clarity that comes from using mathematical libraries for linear algebra. The code became more concise, and the performance improved, especially for batch processing. This step also made it easier to experiment with different activation functions and input sizes.
+
+**ANN Layer with NumPy (B):**
+----------------------------
+Building on the single neuron, I implemented a full layer of neurons using NumPy. This involved matrix multiplication for the forward pass, which is the foundation of modern neural networks. Although training was not required at this stage, this exercise clarified how layers are structured and how data flows through a network.
+
+**PyTorch ANN (C):**
+--------------------
+Transitioning to PyTorch, I defined a simple ANN using `nn.Module`, and implemented a full training loop with backpropagation and the Adam optimizer. This step introduced me to the power and flexibility of PyTorch, including automatic differentiation and modular model design. I learned how to structure a model, set up data loaders, and monitor training progress. The model was trained and evaluated on the MNIST dataset, achieving strong accuracy.
+
+**PyTorch ANN on CUDA (D):**
+---------------------------
+Finally, I adapted the PyTorch model to run on a CUDA-enabled GPU. This required moving both the model and data to the GPU, and handling device placement throughout the training and evaluation process. Running on GPU significantly accelerated training, especially for larger batch sizes. This step also deepened my understanding of hardware acceleration and the practical considerations of deep learning at scale.
+
+**Reflection:**
+--------------
+Part 1 provided a comprehensive journey from the mathematical basics of neural networks to practical, high-performance implementations. By starting from scratch and gradually introducing more advanced tools, I developed both intuition and technical skill. The progression from manual code to NumPy to PyTorch mirrored the evolution of real-world machine learning workflows. Implementing and training models on both CPU and GPU gave me valuable experience with the full stack of modern AI development. This foundation will be essential for tackling more complex problems in future assignments and in my continued learning as an AI engineer. 
