@@ -1,0 +1,47 @@
+Reflection on Part 3: Transfer Learning & Data Curation
+========================================================
+
+**Initial Setup:**
+------------------
+At the outset of Part 3, the goal was to apply both classic learning and transfer learning to a real-world image classification problem. I selected the brain tumor MRI dataset, which contains four classes: glioma_tumor, meningioma_tumor, no_tumor, and pituitary_tumor. The dataset was organized into class folders for compatibility with PyTorch's ImageFolder utility. The initial approach involved implementing a simple CNN from scratch (classic learning) and a transfer learning pipeline using a pre-trained ResNet50 model, both with basic data augmentation (random horizontal flip, rotation, normalization) and default training hyperparameters (20 epochs, standard learning rates).
+
+**Classic Learning:**
+---------------------
+The classic model was a straightforward CNN with three convolutional layers and max pooling, followed by a fully connected classifier. Early results showed that the model could learn the task, but there was significant confusion between certain tumor types, especially glioma and meningioma, and between pituitary and no_tumor. The validation accuracy plateaued around 82%, and the confusion matrix revealed that some classes were much easier for the model than others. This suggested both class imbalance and insufficient generalization.
+
+**Transfer Learning:**
+----------------------
+The initial transfer learning setup used a pre-trained ResNet50 with only the final fully connected layer replaced to match the number of classes. Only the new head was trained, with all other layers frozen. Early results were underwhelming: validation accuracy was similar to the classic model (~82%), and the confusion matrix showed persistent confusion between classes. This indicated that the model was not adapting enough to the specifics of the medical image data.
+
+**Iterative Improvements:**
+--------------------------
+To address these issues, several targeted improvements were made:
+
+1. **Enhanced Data Augmentation:**
+   - Added `RandomResizedCrop`, `RandomVerticalFlip`, `RandomRotation(20)`, and `ColorJitter` to the training transforms. This increased the diversity of the training data and helped the models generalize better, reducing overfitting.
+
+2. **Class Weighting:**
+   - Computed class weights from the training set and used them in the loss function. This adjustment penalized misclassifications of underrepresented classes more heavily, leading to better balance in the confusion matrix and improved accuracy for minority classes.
+
+3. **Transfer Learning Fine-Tuning:**
+   - Unfroze the last block (`layer4`) of ResNet50 in addition to the final fully connected layer. This allowed the model to adapt more deeply to the new dataset, leveraging both the general features learned from ImageNet and the specific features needed for brain tumor classification.
+
+4. **Hyperparameter Tuning:**
+   - Lowered the learning rate (to 5e-4 for classic, 5e-5 for transfer learning) and increased the number of epochs to 50. This allowed for more stable and thorough training, especially important when fine-tuning deep networks.
+   - Added checkpointing every 10 epochs to save intermediate models and safeguard against training interruptions.
+
+**Results and Observations:**
+----------------------------
+After implementing these changes, the results improved dramatically:
+
+- **Classic CNN:**
+  - Validation accuracy remained around 82–83%, with some improvement in class balance due to class weighting and better augmentation. However, the model still struggled with certain tumor types, and the confusion matrix showed persistent off-diagonal errors.
+
+- **Transfer Learning (ResNet50):**
+  - Validation accuracy increased significantly, reaching and maintaining around 97% after about 10 epochs. The training and validation curves were smooth and closely aligned, indicating excellent generalization and minimal overfitting.
+  - The confusion matrix became much more diagonal, with most predictions correct for all classes. The model was especially strong on the no_tumor and meningioma_tumor classes, and performance on glioma_tumor and pituitary_tumor also improved.
+  - The improvements were directly attributable to the combination of stronger data augmentation, class weighting, and deeper fine-tuning of the pre-trained model.
+
+**Reflection:**
+---------------
+This process highlighted the power of transfer learning, especially when combined with thoughtful data curation and augmentation. The initial results showed that simply swapping the final layer of a pre-trained model is not always enough—allowing the model to adapt more deeply to the new data, and addressing class imbalance, are both crucial for success. Data augmentation played a key role in preventing overfitting and improving generalization, while class weighting ensured that all classes were learned effectively. The classic CNN provided a useful baseline, but transfer learning with a well-tuned pipeline delivered state-of-the-art results for this challenging medical image classification task. This experience reinforced the importance of iterative experimentation, careful analysis of results, and the value of modern deep learning best practices in real-world machine learning projects. 
