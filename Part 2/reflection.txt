@@ -1,0 +1,26 @@
+Reflection on Part 2: Power-ups, CNNs & MLOps
+==============================================
+
+**Initial Goals:**
+------------------
+Part 2 aimed to move beyond the basics of neural networks and introduce more advanced machine learning engineering practices. The focus was on building a robust, reproducible ML pipeline for MNIST digit classification using PyTorch and Convolutional Neural Networks (CNNs), while also learning about MLOps, regularization, data augmentation, and experiment tracking.
+
+**MLOps and Experiment Tracking:**
+----------------------------------
+A major step forward in this part was the adoption of MLOps best practices. I implemented a system where every training run creates a unique output folder containing all relevant artifacts: model checkpoints, metrics, plots, configuration files, and a copy of the training script. This structure made it easy to compare different runs, reproduce results, and keep track of which hyperparameters and code produced which models. Saving the best model (by validation accuracy) and using it for test evaluation ensured that overfitting was minimized and that the reported results were reliable.
+
+**Data Augmentation and Regularization:**
+-----------------------------------------
+To improve generalization and reduce overfitting, I applied a variety of data augmentation techniques (scaling, rotation, flipping, normalization) to the training data. I also incorporated regularization methods such as dropout and batch normalization into the CNN architecture. These techniques helped the model learn more robust features and perform better on unseen data.
+
+**CNN Architecture and Experimentation:**
+-----------------------------------------
+Switching from a fully connected network to a CNN allowed the model to take advantage of spatial structure in the images, leading to significant improvements in accuracy. I experimented with different numbers and types of convolutional layers, as well as various hyperparameters, to find effective architectures. The modular design of the code made it easy to try new ideas and compare results.
+
+**Performance Metrics and Reporting:**
+-------------------------------------
+I logged and plotted training and validation loss/accuracy per epoch, as well as confusion matrices and example predictions. Training time was measured and saved for each run, providing insight into the efficiency of different models and settings. All results were saved in organized output folders, making it easy to review and present findings.
+
+**Reflection:**
+--------------
+Part 2 was a significant step up in complexity and professionalism compared to Part 1. I learned how to structure machine learning projects for reproducibility, transparency, and scalability. The experience of managing experiments, tracking results, and applying advanced regularization and augmentation techniques has prepared me for real-world ML workflows. The pipeline I built can be easily extended to new datasets and models, and the MLOps practices I adopted will be invaluable in future projects and collaborations. 
